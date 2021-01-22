@@ -1,0 +1,22 @@
+{
+  "name": "javascript-selenium",
+  "version": "1.0.0",
+  "description": "Selenium Testing utilizing Javascript",
+  "main": "framework.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaundersEddie/javascript-selenium.git"
+  },
+  "author": "Eddie Saunders",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SaundersEddie/javascript-selenium/issues"
+  },
+  "homepage": "https://github.com/SaundersEddie/javascript-selenium#readme",
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.8"
+  }
+}
