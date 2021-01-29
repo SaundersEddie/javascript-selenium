@@ -11,11 +11,11 @@ const {Builder, By, Key, util} = require('selenium-webdriver');
   //   driver.quit();
   // )
 
- async function example() {
+ (async function example() {
    let driver=await new Builder().forBrowser("chrome").build();
-   await driver.get("http://google.com");
-   await driver.findElement(By.name("q")).sendKeys("Selenium", Key.RETURN);
-   await driver.quit();
-}
+   await driver.get("http://www.amazon.com");
+   await driver.findElements(By.class("nav-search-field")).sendKeys("Toilet Seats", Key.RETURN);
+  //  await driver.quit();
+})();
 
-example();
+// example();
