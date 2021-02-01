@@ -1,24 +1,26 @@
-const {Builder, By, Key, util} = require('selenium-webdriver');
+import {Builder, By} from 'selenium-webdriver';
 
-async function openDriver(browserType) {
+export const openDriver = async (browserType) => {
     try {
         const driver = new Builder()
         .forBrowser(browserType)
         .build();
+        return (driver);
     } catch (error) {
         console.log ("Error opening browser: ", error)
     }
 }
 
-async function openPage(pageURL) {
+export const openPage = async (driver, pageURL) => {
     try {
-        await driver.get("http://www.amazon.com");
+        console.log ("open page driver: ", driver)
+        await driver.get(pageURL);
     } catch (error) {
         console.log ("Error opening page: ", error)
     }
 }
 
-async function closeBrower() {
+export const closeBrowser = async () => {
     try {
         await driver.quit();
     } catch (error) {
@@ -26,4 +28,4 @@ async function closeBrower() {
     }
 }
 
-module.exports = basePage;
+// module.exports = basePage;

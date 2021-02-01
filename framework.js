@@ -1,28 +1,32 @@
+import {openDriver, openPage, closeBrowser} from './libs/basePage.js';
 
-const {openDriver, openPage, closeBrowser} = require ('./libs/basePage');
+console.log (openDriver);
+// console.log ("openDriver: ", openDriver);
+// import {Builder, By, Key, util} = require('selenium-webdriver');
 
-console.log ("openDriver: ", openDriver);
-const {Builder, By, Key, util} = require('selenium-webdriver');
-const driver = new Builder()
-      .forBrowser("chrome")
-      .build();
+// import {Builder, By, Key} from 'selenium-webdriver';
 
- async function example() {
-  try {
-    await driver.get("http://www.amazon.com");
+// const driver = new Builder()
+//       .forBrowser("chrome")
+//       .build();
 
-    await driver.quit();
-  } catch(error) {
-    console.log (error);
-  }
- }
+//  async function example() {
+//   try {
+//     await driver.get("http://www.amazon.com");
 
-
- example();
+//     await driver.quit();
+//   } catch(error) {
+//     console.log (error);
+//   }
+//  }
 
 
- openDriver ("firefox");
- openPage("www.yahoo.co.uk");
+//  example();
+
+
+ let myDriverTest = await openDriver ("firefox");
+//  console.log (myDriverTest);
+ openPage(myDriverTest, "http://www.yahoo.co.uk");
  
 //   let ourSearch = await driver.findElements(By.class("#nav-input"));
 //   ourSearch.getAttributes('class')
