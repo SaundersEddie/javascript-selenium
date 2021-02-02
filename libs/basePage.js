@@ -7,25 +7,43 @@ export const openDriver = async (browserType) => {
         .build();
         return (driver);
     } catch (error) {
-        console.log ("Error opening browser: ", error)
+        errorHandler (driver, "Error opening browser: ", error)
     }
 }
 
-export const openPage = async (driver, pageURL) => {
+export const openPage = async (ourDriver, pageURL) => {
     try {
-        console.log ("open page driver: ", driver)
-        await driver.get(pageURL);
+        await ourDriver.get(pageURL);
     } catch (error) {
-        console.log ("Error opening page: ", error)
+        errorHandler (ourDriver, "Error opening page: ", error)
     }
 }
 
-export const closeBrowser = async () => {
+export const closeBrowser = async (ourDriver) => {
     try {
-        await driver.quit();
+        await ourDriver.quit();
     } catch (error) {
-        console.log ("Error closing browser: ", error)
+        errorHandler (ourDriver, "Error closing browser: ", error)
     }
 }
 
-// module.exports = basePage;
+export const findByName = async (ourDriver, ourName) => {
+    try {
+        // /html/body/div[6]/div/div/header/div/div[1]/div/div[2]/nav/ul/li[3]/a
+        await ourDriver.findElement(By.xpath('/html/body/div[6]/div/div/header/div/div[1]/div/div[2]/nav/ul/li[3]/a')).click();
+    
+    } catch(error) {
+        errorHandler (ourDriver, "Error with findingbyname: ", error);
+    }
+}
+
+
+const errorHandler = async (ourDriver, errorMessage, ourError) => {
+    try {
+       console.log (`${errorMessage} ${ourError}`)
+       await ourDriver.quit();
+    } catch(error) {
+        errorHandler(ourDriver, "Error Handler Failure", error)
+    }
+    
+}
