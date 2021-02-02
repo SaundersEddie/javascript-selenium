@@ -40,8 +40,6 @@ export const findByName = async (ourDriver, ourName) => {
 export const screenShot = async (ourDriver) => {
     try {
         let encodedString = await ourDriver.takeScreenshot();
-        console.log (encodedString);
-
         await fs.writeFileSync('./image.png', encodedString, 'base64');
     } catch (error) {
         errorHandler(ourDriver, "Error taking screenshot", error);
@@ -50,6 +48,7 @@ export const screenShot = async (ourDriver) => {
 const errorHandler = async (ourDriver, errorMessage, ourError) => {
     try {
        console.log (`${errorMessage} ${ourError}`)
+       await screenShot(ourDriver);
        await ourDriver.quit();
     } catch(error) {
         errorHandler(ourDriver, "Error Handler Failure", error)
