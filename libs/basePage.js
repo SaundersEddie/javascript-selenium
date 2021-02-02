@@ -33,22 +33,24 @@ export const findByName = async (ourDriver, ourName) => {
         await ourDriver.findElement(By.css('button')).click();
         await ourDriver.findElement(By.xpath('/html/body/div[2]/div/div/div/button')).click();
     } catch(error) {
-        errorHandler (ourDriver, "Error with findingbyname: ", error);
+        await errorHandler (ourDriver, "Error with findingbyname: ", error);
     }
 }
 
 export const screenShot = async (ourDriver) => {
     try {
         let encodedString = await ourDriver.takeScreenshot();
-        await fs.writeFileSync('./image.png', encodedString, 'base64');
+        let ourTime = new Date();
+        let ourFileName = `${ourTime.getMonth()+1}-${ourTime.getDate()}-${ourTime.getFullYear()}-${ourTime.getHours()}${ourTime.getMinutes()}${ourTime.getSeconds()}`;
+        await fs.writeFileSync(`screenshot-${ourFileName}.png`, encodedString, 'base64');
     } catch (error) {
-        errorHandler(ourDriver, "Error taking screenshot", error);
+        await errorHandler(ourDriver, "Error taking screenshot", error);
     }
 }
 const errorHandler = async (ourDriver, errorMessage, ourError) => {
     try {
        console.log (`${errorMessage} ${ourError}`)
-       await screenShot(ourDriver);
+    //    await screenShot(ourDriver);
        await ourDriver.quit();
     } catch(error) {
         errorHandler(ourDriver, "Error Handler Failure", error)
