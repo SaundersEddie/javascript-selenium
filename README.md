@@ -1,6 +1,6 @@
 # JavaScript - Selenium Testing
 
-While building a JS/React project I decided to also investigate end user testing, so this poorly named repository was creatged, a simple javascript framework to use Selenium Version 4.0.0-alpha and nodeJS to perform said testing. This is a little challenging as I want to have a framework in place that can be implemented for any application. This means building a fair amount of base methods to be exported to individual tests. Initial builds will almost certainly be exceedingly rough and will be improved over time.
+While building a JS/React project I decided to also investigate end user testing, so this poorly named repository was created, a simple javascript framework to use Selenium Version 4.0.0-alpha and nodeJS to perform said testing. This is a little challenging as I want to have a framework in place that can be implemented for any application. This means building a fair amount of base methods to be exported to individual tests. Initial builds will almost certainly be exceedingly rough and will be improved over time.
 
 # Table of Contents
 
