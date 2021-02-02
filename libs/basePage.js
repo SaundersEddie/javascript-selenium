@@ -29,9 +29,8 @@ export const closeBrowser = async (ourDriver) => {
 
 export const findByName = async (ourDriver, ourName) => {
     try {
-        // /html/body/div[6]/div/div/header/div/div[1]/div/div[2]/nav/ul/li[3]/a
-        await ourDriver.findElement(By.xpath('/html/body/div[6]/div/div/header/div/div[1]/div/div[2]/nav/ul/li[3]/a')).click();
-    
+        await ourDriver.findElement(By.css('button')).click();
+        await ourDriver.findElement(By.xpath('/html/body/div[2]/div/div/div/button')).click();
     } catch(error) {
         errorHandler (ourDriver, "Error with findingbyname: ", error);
     }
