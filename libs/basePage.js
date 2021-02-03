@@ -28,10 +28,17 @@ export const closeBrowser = async (ourDriver) => {
     }
 }
 
-export const findByName = async (ourDriver, ourName) => {
+export const clickByXPath = async (ourDriver, ourXPath) => {
     try {
-        await ourDriver.findElement(By.css('button')).click();
-        await ourDriver.findElement(By.xpath('/html/body/div[2]/div/div/div/button')).click();
+        await ourDriver.findElement(By.xpath(ourXPath)).click();
+    } catch (error) {
+        errorHandler (ourDriver, "Error locating XPath: ", error)
+    }
+}
+
+export const clickByName = async (ourDriver, ourName) => {
+    try {
+        await ourDriver.findElement(By.name(ourName)).click();
     } catch(error) {
         await errorHandler (ourDriver, "Error with findingbyname: ", error);
     }
