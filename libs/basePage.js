@@ -44,6 +44,14 @@ export const clickByName = async (ourDriver, ourName) => {
     }
 }
 
+export const clickByCSS = async (ourDriver, ourElement) => {
+    try {
+        await ourDriver.findElement(By.css(ourElement)).click();
+    } catch(error) {
+        await errorHandler(ourDriver, "Error with clicking by CSS Element: ", error);
+    }
+}
+
 export const screenShot = async (ourDriver) => {
     try {
         let encodedString = await ourDriver.takeScreenshot();
