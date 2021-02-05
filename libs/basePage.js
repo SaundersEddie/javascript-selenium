@@ -40,7 +40,15 @@ export const clickByName = async (ourDriver, ourName) => {
     try {
         await ourDriver.findElement(By.name(ourName)).click();
     } catch(error) {
-        await errorHandler (ourDriver, "Error with findingbyname: ", error);
+        await errorHandler (ourDriver, "Error with locating requested name: ", error);
+    }
+}
+
+export const clickByID = async (ourDriver, ourID) => {
+    try {
+        await ourDriver.findElement(By.id(ourID)).click();
+    } catch(error) {
+        await errorHandler (ourDriver, "Error with locating requested ID: ", error);
     }
 }
 
@@ -49,6 +57,14 @@ export const clickByCSS = async (ourDriver, ourElement) => {
         await ourDriver.findElement(By.css(ourElement)).click();
     } catch(error) {
         await errorHandler(ourDriver, "Error with clicking by CSS Element: ", error);
+    }
+}
+
+export const clickByClass = async (ourDriver, ourClass) => {
+    try {
+        await ourDriver.findElement(By.className(ourClass)).click();
+    } catch(error) {
+        await errorHandler(ourDriver, "Error with clicking by Class: ", error);
     }
 }
 
