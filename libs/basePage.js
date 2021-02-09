@@ -68,6 +68,15 @@ export const clickByClass = async (ourDriver, ourClass) => {
     }
 }
 
+export const getTextByID = async (ourDriver, ourElement, ourText) => {
+    try {
+        await ourDriver.findElement(By.id(ourElement)).getText();
+    } catch (error) {
+        await screenShot(ourDriver);
+        await errorHandler(ourDriver, "Error finding text by ID: ", error);
+    }
+}
+
 export const screenShot = async (ourDriver) => {
     try {
         let encodedString = await ourDriver.takeScreenshot();
@@ -78,6 +87,7 @@ export const screenShot = async (ourDriver) => {
         await errorHandler(ourDriver, "Error taking screenshot", error);
     }
 }
+
 const errorHandler = async (ourDriver, errorMessage, ourError) => {
     try {
        console.log (`${errorMessage} ${ourError}`)
