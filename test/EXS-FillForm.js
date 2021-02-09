@@ -11,7 +11,27 @@
 // Then click the submit button
 // Verify an alert appears with the message "Form Submitted"
 
-import {openDriver, openPage, closeBrowser, screenShot, clickByClass, clickByXPath, clickByID, clickByName} from '../libs/basePage.js';
+import {openDriver, 
+        openPage, 
+        closeBrowser, 
+        screenShot, 
+        clickByClass, 
+        clickByXPath, 
+        clickByID, 
+        clickByName, 
+        typeTextByID,
+        typeTextByClass} from '../libs/basePage.js';
 
 const ourDriver = await openDriver("firefox")
 const ourTestPage = "https://saunderseddie.github.io/testing-site/"
+
+
+await ourDriver.manage().setTimeouts({implicit: 10000});
+await ourDriver.manage().window().maximize();
+
+await openPage (ourDriver,ourTestPage);
+await clickByXPath(ourDriver,"/html/body/ul/li[2]/a");
+// await clickByID(ourDriver,"fname");
+await typeTextByID(ourDriver,"fname","Test");
+
+await typeTextByClass (ourDriver,"lname","Test LastName");

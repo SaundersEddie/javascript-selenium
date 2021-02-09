@@ -15,15 +15,13 @@ import {openDriver, openPage, closeBrowser, screenShot, clickByClass, clickByXPa
 const ourDriver = await openDriver("firefox")
 const ourTestPage = "https://saunderseddie.github.io/testing-site/"
 
-// await ourDriver.manage().window().maximize();
+await ourDriver.manage().setTimeouts({implicit: 10000});
+await ourDriver.manage().window().maximize();
 
 await openPage (ourDriver,ourTestPage);
-await ourDriver.sleep(3000);
 await clickByClass(ourDriver,"myTestButtonClass");
-await ourDriver.sleep(3000);
 await clickByID(ourDriver, "id-myBtn");
-await ourDriver.sleep(3000);
-await getTextByID(ourDriver, "myText", "My button has been clicked");
+let myTextTestStuff = await getTextByID(ourDriver, "myText", "My button has been clicked!!");
+console.log ("myTextTestStuff: ", myTextTestStuff);
 await clickByName(ourDriver,"goHome");
-await ourDriver.sleep(3000);
-// await closeBrowser(ourDriver);
+await closeBrowser(ourDriver);

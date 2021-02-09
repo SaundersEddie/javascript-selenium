@@ -70,10 +70,28 @@ export const clickByClass = async (ourDriver, ourClass) => {
 
 export const getTextByID = async (ourDriver, ourElement, ourText) => {
     try {
-        await ourDriver.findElement(By.id(ourElement)).getText();
+        let ourTextTest = await ourDriver.findElement(By.id(ourElement)).getText();
+        if (ourText !== ourTextTest) return ("Failed");
+        return ("Found");
     } catch (error) {
         await screenShot(ourDriver);
         await errorHandler(ourDriver, "Error finding text by ID: ", error);
+    }
+}
+
+export const typeTextByID = async (ourDriver, ourID, ourText) => {
+    try {
+        await ourDriver.findElement(By.id(ourID)).sendKeys(ourText);
+    } catch (error) {
+        await errorHandler(ourDriver, "Error typing text: ", error);
+    }
+}
+
+export const typeTextByClass = async (ourDriver, ourClass, ourText) => {
+    try {
+        await ourDriver.findElement(By.className(ourClass)).sendKeys(ourText);
+    } catch (error) {
+        await errorHandler(ourDriver, "Error typing text: ", error);
     }
 }
 
