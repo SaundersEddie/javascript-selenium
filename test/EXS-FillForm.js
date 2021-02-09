@@ -31,7 +31,6 @@ await ourDriver.manage().window().maximize();
 
 await openPage (ourDriver,ourTestPage);
 await clickByXPath(ourDriver,"/html/body/ul/li[2]/a");
-// await clickByID(ourDriver,"fname");
 await typeTextByID(ourDriver,"fname","Test");
-
 await typeTextByClass (ourDriver,"lname","Test LastName");
+
