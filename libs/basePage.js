@@ -1,4 +1,4 @@
-import {Builder, By} from 'selenium-webdriver';
+import {Builder, By, until} from 'selenium-webdriver';
 import fs from 'fs';
 
 export const openDriver = async (browserType) => {
@@ -92,6 +92,26 @@ export const typeTextByClass = async (ourDriver, ourClass, ourText) => {
         await ourDriver.findElement(By.className(ourClass)).sendKeys(ourText);
     } catch (error) {
         await errorHandler(ourDriver, "Error typing text: ", error);
+    }
+}
+
+export const getAlertText = async (ourDriver, ourText) => {
+    try {
+        await ourDriver.wait(until.alertIsPresent());
+        let ourAlertText = await ourDriver.switchTo().alert().getText();
+        if (ourText !== ourAlertText) return ("Failed");
+        return ("Found");
+    } catch (error) {
+        await errorHandler(ourDriver, "Error getting alert text: ", error);
+    }
+  
+}
+
+export const acceptAlert = async (ourDriver) => {
+    try {
+        await ourDriver.switchTo().alert().accept();
+    } catch (error) {
+        await errorHandler(ourDriver, "Error with alert: ", error);
     }
 }
 

@@ -9,7 +9,7 @@
 // Then select the tiger radio button
 // And Select I have a Dog checkbox.
 // Then click the submit button
-// Verify an alert appears with the message "Form Submitted"
+// Verify an alert appears with the message "Thanks for submitting the info."
 
 import {openDriver, 
         openPage, 
@@ -20,17 +20,27 @@ import {openDriver,
         clickByID, 
         clickByName, 
         typeTextByID,
-        typeTextByClass} from '../libs/basePage.js';
+        typeTextByClass,
+        acceptAlert,
+        getAlertText} from '../libs/basePage.js';
 
 const ourDriver = await openDriver("firefox")
 const ourTestPage = "https://saunderseddie.github.io/testing-site/"
 
 
 await ourDriver.manage().setTimeouts({implicit: 10000});
-await ourDriver.manage().window().maximize();
+// await ourDriver.manage().window().maximize();
 
 await openPage (ourDriver,ourTestPage);
 await clickByXPath(ourDriver,"/html/body/ul/li[2]/a");
 await typeTextByID(ourDriver,"fname","Test");
 await typeTextByClass (ourDriver,"lname","Test LastName");
-
+await clickByID(ourDriver, "tiger");
+await clickByID(ourDriver, "animal1");
+await clickByName(ourDriver, "animal2");
+await clickByXPath(ourDriver, '/html/body/form/input[9]');
+let myAlertText = await getAlertText(ourDriver, "Thanks for submitting the info");
+console.log ("myAlertText: ", myAlertText);
+await acceptAlert(ourDriver);
+await clickByName(ourDriver,"goHome");
+await closeBrowser(ourDriver);
