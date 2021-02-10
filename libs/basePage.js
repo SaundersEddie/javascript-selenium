@@ -107,6 +107,23 @@ export const getAlertText = async (ourDriver, ourText) => {
   
 }
 
+export const typeTextAlert = async (ourDriver, ourText) => {
+    try {
+        await ourDriver.wait(until.alertIsPresent());
+        await ourDriver.switchTo().alert().sendKeys(ourText);
+    } catch (error) {
+        await errorHandler(ourDriver, "Error typing prompt text: ", error);
+    }
+}
+
+export const cancelAlert = async (ourDriver) => {
+    try {
+        await ourDriver.switchTo().alert().dismiss();
+    } catch (error) {
+        await errorHandler(ourDriver, "Cannot dismiss prompt: ", error);
+    }
+}
+
 export const acceptAlert = async (ourDriver) => {
     try {
         await ourDriver.switchTo().alert().accept();

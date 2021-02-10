@@ -14,7 +14,6 @@
 import {openDriver, 
         openPage, 
         closeBrowser, 
-        screenShot, 
         clickByClass, 
         clickByXPath, 
         clickByID, 
@@ -26,7 +25,6 @@ import {openDriver,
 
 const ourDriver = await openDriver("firefox")
 const ourTestPage = "https://saunderseddie.github.io/testing-site/"
-
 
 await ourDriver.manage().setTimeouts({implicit: 10000});
 // await ourDriver.manage().window().maximize();
@@ -40,7 +38,6 @@ await clickByID(ourDriver, "animal1");
 await clickByName(ourDriver, "animal2");
 await clickByXPath(ourDriver, '/html/body/form/input[9]');
 let myAlertText = await getAlertText(ourDriver, "Thanks for submitting the info");
-console.log ("myAlertText: ", myAlertText);
 await acceptAlert(ourDriver);
 await clickByName(ourDriver,"goHome");
 await closeBrowser(ourDriver);
