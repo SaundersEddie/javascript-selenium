@@ -13,7 +13,7 @@ While building a JS/React project I decided to also investigate end user testing
 
 # Build Status
 
-This project was started on Jan 22 2021 and is still in development
+This project was started on Jan 22 2021 and is still in development. Right now the code is purely at the green stage of red, green, refactor. It works, but has lots of optimization and tweaking to be done. Next step is to build the same level in Python, before moving over to see how we can implement some BDD technologies.
 
 # Technology
 
