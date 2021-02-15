@@ -12,7 +12,7 @@ export const openDriver = async (browserType) => {
     }
 }
 
-export const openPage = async (ourDriver, pageURL) => {
+export const openPage = async (ourDriver, pageURL="") => {
     try {
         await ourDriver.get(pageURL);
     } catch (error) {
@@ -28,7 +28,7 @@ export const closeBrowser = async (ourDriver) => {
     }
 }
 
-export const clickByXPath = async (ourDriver, ourXPath) => {
+export const clickByXPath = async (ourDriver, ourXPath="") => {
     try {
         await ourDriver.findElement(By.xpath(ourXPath)).click();
     } catch (error) {
@@ -46,7 +46,7 @@ export const clickByName = async (ourDriver, ourName = "") => {
     }
 }
 
-export const clickByID = async (ourDriver, ourID) => {
+export const clickByID = async (ourDriver, ourID="") => {
     try {
         await ourDriver.findElement(By.id(ourID)).click();
     } catch(error) {
@@ -54,7 +54,7 @@ export const clickByID = async (ourDriver, ourID) => {
     }
 }
 
-export const clickByCSS = async (ourDriver, ourElement) => {
+export const clickByCSS = async (ourDriver, ourElement="") => {
     try {
         
         await ourDriver.findElement(By.css(ourElement)).click();
@@ -63,7 +63,7 @@ export const clickByCSS = async (ourDriver, ourElement) => {
     }
 }
 
-export const clickByClass = async (ourDriver, ourClass) => {
+export const clickByClass = async (ourDriver, ourClass="") => {
     try {
         await ourDriver.findElement(By.className(ourClass)).click();
     } catch(error) {
@@ -71,7 +71,7 @@ export const clickByClass = async (ourDriver, ourClass) => {
     }
 }
 
-export const getTextByID = async (ourDriver, ourElement, ourText) => {
+export const getTextByID = async (ourDriver, ourElement="", ourText="") => {
     try {
         let ourTextTest = await ourDriver.findElement(By.id(ourElement)).getText();
         if (ourText !== ourTextTest) return ("Failed");
@@ -82,7 +82,7 @@ export const getTextByID = async (ourDriver, ourElement, ourText) => {
     }
 }
 
-export const typeTextByID = async (ourDriver, ourID, ourText) => {
+export const typeTextByID = async (ourDriver, ourID="", ourText="") => {
     try {
         await ourDriver.findElement(By.id(ourID)).sendKeys(ourText);
     } catch (error) {
@@ -90,7 +90,7 @@ export const typeTextByID = async (ourDriver, ourID, ourText) => {
     }
 }
 
-export const typeTextByClass = async (ourDriver, ourClass, ourText) => {
+export const typeTextByClass = async (ourDriver, ourClass="", ourText="") => {
     try {
         await ourDriver.findElement(By.className(ourClass)).sendKeys(ourText);
     } catch (error) {
@@ -98,7 +98,7 @@ export const typeTextByClass = async (ourDriver, ourClass, ourText) => {
     }
 }
 
-export const getAlertText = async (ourDriver, ourText) => {
+export const getAlertText = async (ourDriver, ourText = "") => {
     try {
         await ourDriver.wait(until.alertIsPresent());
         let ourAlertText = await ourDriver.switchTo().alert().getText();
@@ -110,7 +110,7 @@ export const getAlertText = async (ourDriver, ourText) => {
   
 }
 
-export const typeTextAlert = async (ourDriver, ourText) => {
+export const typeTextAlert = async (ourDriver, ourText = "") => {
     try {
         await ourDriver.wait(until.alertIsPresent());
         await ourDriver.switchTo().alert().sendKeys(ourText);
@@ -162,11 +162,11 @@ const errorHandler = async (ourDriver, errorMessage, ourError) => {
 const checkParams = async (ourDriver, ourText = "") => {
     try {
         if (ourText === "") {
-            console.log ("Did not pass in correct parameters");
+            console.log ("Passed in prarameter was an empty string");
             await ourDriver.quit();
             process.exit(1);
         }
     } catch (error) {
-        console.log ("Error in checking PArams: ", error);
+        console.log ("Error in passed Parameters: ", error);
     }
 }
