@@ -36,8 +36,10 @@ export const clickByXPath = async (ourDriver, ourXPath) => {
     }
 }
 
-export const clickByName = async (ourDriver, ourName) => {
+export const clickByName = async (ourDriver, ourName = "") => {
     try {
+        // if (ourName === "") {throw ("No text in ourName")};
+        checkParams (ourDriver, ourName);
         await ourDriver.findElement(By.name(ourName)).click();
     } catch(error) {
         await errorHandler (ourDriver, "Error with locating requested name: ", error);
@@ -54,6 +56,7 @@ export const clickByID = async (ourDriver, ourID) => {
 
 export const clickByCSS = async (ourDriver, ourElement) => {
     try {
+        
         await ourDriver.findElement(By.css(ourElement)).click();
     } catch(error) {
         await errorHandler(ourDriver, "Error with clicking by CSS Element: ", error);
@@ -143,13 +146,27 @@ export const screenShot = async (ourDriver) => {
     }
 }
 
+// Error Handling Code
+
 const errorHandler = async (ourDriver, errorMessage, ourError) => {
     try {
        console.log (`${errorMessage} ${ourError}`)
     //    await screenShot(ourDriver);
        await ourDriver.quit();
+       process.exit(1);
     } catch(error) {
         errorHandler(ourDriver, "Error Handler Failure", error)
     }
-    
+}
+
+const checkParams = async (ourDriver, ourText = "") => {
+    try {
+        if (ourText === "") {
+            console.log ("Did not pass in correct parameters");
+            await ourDriver.quit();
+            process.exit(1);
+        }
+    } catch (error) {
+        console.log ("Error in checking PArams: ", error);
+    }
 }

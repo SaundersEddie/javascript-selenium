@@ -26,8 +26,4 @@ await clickByXPath(ourDriver,"/html/body/ul/li[5]/a");
 await typeTextAlert(ourDriver,"Testing Accept!");
 await acceptAlert(ourDriver);
 await clickByName(ourDriver,"goHome");
-await clickByXPath(ourDriver,"/html/body/ul/li[5]/a");
-await typeTextAlert(ourDriver,"Testing Cancel!");
-await cancelAlert(ourDriver);
-await clickByName(ourDriver,"goHome");
 await closeBrowser(ourDriver);
