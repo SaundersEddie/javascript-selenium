@@ -14,6 +14,7 @@ export const openDriver = async (browserType) => {
 
 export const openPage = async (ourDriver, pageURL="") => {
     try {
+        checkParams (ourDriver, pageURL);
         await ourDriver.get(pageURL);
     } catch (error) {
         errorHandler (ourDriver, "Error opening page: ", error)
@@ -30,6 +31,7 @@ export const closeBrowser = async (ourDriver) => {
 
 export const clickByXPath = async (ourDriver, ourXPath="") => {
     try {
+        checkParams (ourDriver, ourXPath);
         await ourDriver.findElement(By.xpath(ourXPath)).click();
     } catch (error) {
         errorHandler (ourDriver, "Error locating XPath: ", error)
@@ -48,6 +50,7 @@ export const clickByName = async (ourDriver, ourName = "") => {
 
 export const clickByID = async (ourDriver, ourID="") => {
     try {
+        checkParams (ourDriver, ourID);
         await ourDriver.findElement(By.id(ourID)).click();
     } catch(error) {
         await errorHandler (ourDriver, "Error with locating requested ID: ", error);
@@ -56,7 +59,7 @@ export const clickByID = async (ourDriver, ourID="") => {
 
 export const clickByCSS = async (ourDriver, ourElement="") => {
     try {
-        
+        checkParams (ourDriver, ourElement);
         await ourDriver.findElement(By.css(ourElement)).click();
     } catch(error) {
         await errorHandler(ourDriver, "Error with clicking by CSS Element: ", error);
@@ -65,6 +68,7 @@ export const clickByCSS = async (ourDriver, ourElement="") => {
 
 export const clickByClass = async (ourDriver, ourClass="") => {
     try {
+        checkParams (ourDriver, ourClass);
         await ourDriver.findElement(By.className(ourClass)).click();
     } catch(error) {
         await errorHandler(ourDriver, "Error with clicking by Class: ", error);
@@ -73,6 +77,8 @@ export const clickByClass = async (ourDriver, ourClass="") => {
 
 export const getTextByID = async (ourDriver, ourElement="", ourText="") => {
     try {
+        checkParams (ourDriver, ourElement);
+        checkParams (ourDriver, ourText);
         let ourTextTest = await ourDriver.findElement(By.id(ourElement)).getText();
         if (ourText !== ourTextTest) return ("Failed");
         return ("Found");
@@ -84,6 +90,8 @@ export const getTextByID = async (ourDriver, ourElement="", ourText="") => {
 
 export const typeTextByID = async (ourDriver, ourID="", ourText="") => {
     try {
+        checkParams (ourDriver, ourID);
+        checkParams (ourDriver, ourText);
         await ourDriver.findElement(By.id(ourID)).sendKeys(ourText);
     } catch (error) {
         await errorHandler(ourDriver, "Error typing text: ", error);
@@ -92,6 +100,8 @@ export const typeTextByID = async (ourDriver, ourID="", ourText="") => {
 
 export const typeTextByClass = async (ourDriver, ourClass="", ourText="") => {
     try {
+        checkParams (ourDriver, ourClass);
+        checkParams (ourDriver, ourText);
         await ourDriver.findElement(By.className(ourClass)).sendKeys(ourText);
     } catch (error) {
         await errorHandler(ourDriver, "Error typing text: ", error);
@@ -100,6 +110,7 @@ export const typeTextByClass = async (ourDriver, ourClass="", ourText="") => {
 
 export const getAlertText = async (ourDriver, ourText = "") => {
     try {
+        checkParams (ourDriver, ourText);
         await ourDriver.wait(until.alertIsPresent());
         let ourAlertText = await ourDriver.switchTo().alert().getText();
         if (ourText !== ourAlertText) return ("Failed");
@@ -112,6 +123,7 @@ export const getAlertText = async (ourDriver, ourText = "") => {
 
 export const typeTextAlert = async (ourDriver, ourText = "") => {
     try {
+        checkParams (ourDriver, ourText);
         await ourDriver.wait(until.alertIsPresent());
         await ourDriver.switchTo().alert().sendKeys(ourText);
     } catch (error) {
