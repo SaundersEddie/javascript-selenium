@@ -16,14 +16,38 @@ import {openDriver,
     clickByName, 
     typeTextAlert } from '../libs/basePage.js';
 
-const ourDriver = await openDriver("firefox")
-const ourTestPage = "https://saunderseddie.github.io/testing-site/"
+import assert from 'assert';
 
-await ourDriver.manage().setTimeouts({implicit: 10000});
+describe('Testing Mocha', function() {
+    beforeEach (async function() {
+        const ourDriver = await openDriver("firefox")
+        const ourTestPage = "https://saunderseddie.github.io/testing-site/"
+        await ourDriver.manage().setTimeouts({implicit: 10000});
+    });
 
-await openPage (ourDriver,ourTestPage);
-await clickByXPath(ourDriver,"/html/body/ul/li[5]/a");
-await typeTextAlert(ourDriver,"Testing Accept!");
-await acceptAlert(ourDriver);
-await clickByName(ourDriver,"goHome");
-await closeBrowser(ourDriver);
+    afterEach(async function() {
+        await closeBrowser(ourDriver);
+    });
+
+    describe('React to prompt', async function() {
+        // it('Should return Testing', async function() {
+            await openPage (ourDriver,ourTestPage);
+            await clickByXPath(ourDriver,"/html/body/ul/li[5]/a");
+            await typeTextAlert(ourDriver,"Testing Accept!");
+            await acceptAlert(ourDriver);
+            await closeBrowser(ourDriver);
+        // });
+    });
+})
+
+// const ourDriver = await openDriver("firefox")
+// const ourTestPage = "https://saunderseddie.github.io/testing-site/"
+
+// await ourDriver.manage().setTimeouts({implicit: 10000});
+
+// await openPage (ourDriver,ourTestPage);
+// await clickByXPath(ourDriver,"/html/body/ul/li[5]/a");
+// await typeTextAlert(ourDriver,"Testing Accept!");
+// await acceptAlert(ourDriver);
+// await clickByName(ourDriver,"goHome");
+// await closeBrowser(ourDriver);
