@@ -13,6 +13,8 @@ import {openDriver,
     cancelAlert,
     clickByName } from '../libs/basePage.js';
 
+console.log ("EXS-ChoiceAlert.js");
+
 const ourDriver = await openDriver("firefox")
 const ourTestPage = "https://saunderseddie.github.io/testing-site/"
 

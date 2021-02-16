@@ -23,6 +23,9 @@ import {openDriver,
         acceptAlert,
         getAlertText} from '../libs/basePage.js';
 
+console.log ("EXS-FillForm.js");
+
+
 const ourDriver = await openDriver("firefox")
 const ourTestPage = "https://saunderseddie.github.io/testing-site/"
 

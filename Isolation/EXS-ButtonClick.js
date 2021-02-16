@@ -12,6 +12,8 @@
 
 import {openDriver, openPage, closeBrowser, screenShot, clickByClass, clickByXPath, clickByID, clickByName, getTextByID} from '../libs/basePage.js';
 
+console.log ("EXS-ButtonClick.js");
+
 const ourDriver = await openDriver("firefox")
 const ourTestPage = "https://saunderseddie.github.io/testing-site/"
 

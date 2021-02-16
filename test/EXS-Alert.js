@@ -15,14 +15,18 @@ import {openDriver,
         acceptAlert,
         clickByName } from '../libs/basePage.js';
 
+import assert from 'assert';
+
+console.log ("Running EXS-Alert.js");
+
 const ourDriver = await openDriver("firefox")
 const ourTestPage = "https://saunderseddie.github.io/testing-site/"
-
-
 await ourDriver.manage().setTimeouts({implicit: 10000});
 
-await openPage (ourDriver,ourTestPage);
-await clickByXPath(ourDriver,"/html/body/ul/li[3]/a");
-await acceptAlert(ourDriver);
-await clickByName(ourDriver,"goHome");
-await closeBrowser(ourDriver);
+describe('Close Alert Popup', async function() {
+    await openPage (ourDriver,ourTestPage);
+    await clickByXPath(ourDriver,"/html/body/ul/li[3]/a");
+    await acceptAlert(ourDriver);
+    await clickByName(ourDriver,"goHome"); 
+    await closeBrowser(ourDriver);
+});

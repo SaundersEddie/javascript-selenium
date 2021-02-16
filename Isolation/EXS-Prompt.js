@@ -12,13 +12,13 @@ import {openDriver,
     closeBrowser,
     clickByXPath,
     acceptAlert,
-    cancelAlert,
-    clickByName, 
     typeTextAlert } from '../libs/basePage.js';
 
 import assert from 'assert';
 
-describe('Testing Mocha', function() {
+console.log ("EXS-Prompt.js");
+
+describe('Testing Mocha', async function() {
     beforeEach (async function() {
         const ourDriver = await openDriver("firefox")
         const ourTestPage = "https://saunderseddie.github.io/testing-site/"
@@ -27,6 +27,7 @@ describe('Testing Mocha', function() {
 
     afterEach(async function() {
         await closeBrowser(ourDriver);
+        // setImmediate(done);
     });
 
     describe('React to prompt', async function() {
@@ -35,7 +36,7 @@ describe('Testing Mocha', function() {
             await clickByXPath(ourDriver,"/html/body/ul/li[5]/a");
             await typeTextAlert(ourDriver,"Testing Accept!");
             await acceptAlert(ourDriver);
-            await closeBrowser(ourDriver);
+            // await closeBrowser(ourDriver);
         // });
     });
 })
