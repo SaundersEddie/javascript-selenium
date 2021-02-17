@@ -21,6 +21,10 @@ JavaScript, Node, and Selenium
 
 # Use
 
+Phase 1: Technically complete, the goal was to implement JS and Selenium 4.0 just to create simple tests outside of a BDD environment. The code will be going through a clean up over the next week or so, and I'll use it to make a base for a YouTube tutorial.
+
+Phase 2: In planning.
+
 # Future
 
 Wiki build out with documentation, as this is only in initial build that has not happened yet.
