@@ -42,3 +42,10 @@ This code can be downloaded here:
 # Credits
 
 Coded by Eddie Saunders
+
+# Build Info
+
+| Date            | Notes                                                   |
+| :-------------- | :------------------------------------------------------ |
+| 19th March 2021 | Moving Project from testing phase to prod type builds   |
+|                 | Install mocha and set 60 second timeout in package.json |

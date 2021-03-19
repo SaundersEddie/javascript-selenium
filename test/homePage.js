@@ -1,6 +1,6 @@
 console.log ("Inside homepage");
 
-var home = require ('../pageobjects/homepage');
+var home = require ('../pageObjects/homePage');
 
 console.log ("inside homepage test: ", home);
 

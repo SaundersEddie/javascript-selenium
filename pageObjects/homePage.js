@@ -1,7 +1,7 @@
 console.log ("Inside pageobjects - homepage");
 
 const {Builder, By, Key, until} = require ('selenium-webdriver');
-var BasePage = require ('../pageobjects/basepage.js');
+var BasePage = require ('../pageObjects/basePage');
 var webdriver = require ('selenium-webdriver');
 
 console.log ("Our BasePAge: ", BasePage);
@@ -13,4 +13,4 @@ class HomePage extends BasePage{
      }
 }
 
-module.exports = HomePage;
+module.exports = new HomePage();
