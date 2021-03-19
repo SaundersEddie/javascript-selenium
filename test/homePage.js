@@ -1,13 +1,10 @@
-console.log ("Inside homepage");
-
-var home = require ('../pageObjects/homePage');
-
-console.log ("inside homepage test: ", home);
+var homePage = require ('../pageObjects/homePage');
 
 describe('This is the desribe block', function(){
     this.timeout(50000);
     beforeEach(function(){
         // before each test do this
+        console.log ("beforeEach")
     });
 
     afterEach(function(){
@@ -15,10 +12,8 @@ describe('This is the desribe block', function(){
     });
 
     it('Test', function(){
-
         var baseurl = "https://www.google.com";
-        home.go_to_url(baseurl);
-        home.enter_search('QA Underground');
+        homePage.go_to_url(baseurl);
+        homePage.enter_search('QA Underground');
     });
-
 })
