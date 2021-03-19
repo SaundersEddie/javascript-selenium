@@ -15,6 +15,12 @@ class BasePage{
     close_browser() {
         driver.close();
     }
+
+    pageTitle() {
+        var myTitle = await driver.getTitle();
+        console.log (myTitle);
+        });
+    }
 }
 
 module.exports = BasePage;

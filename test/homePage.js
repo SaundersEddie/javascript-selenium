@@ -17,7 +17,9 @@ describe('This is the desribe block', function(){
     it('Test', function(){
         var baseurl = "https://www.google.com";
         homePage.go_to_url(baseurl);
+        homePage.pageTitle();
         homePage.enter_search('QA Underground');
+        homePage.pageTitle();
         homePage.close_browser();
     });
 })
