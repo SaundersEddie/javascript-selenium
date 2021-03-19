@@ -11,6 +11,10 @@ class BasePage{
     go_to_url(theURL){
         driver.get(theURL);
     }
+
+    close_browser() {
+        driver.close();
+    }
 }
 
 module.exports = BasePage;
